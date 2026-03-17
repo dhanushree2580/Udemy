@@ -37,7 +37,7 @@ export default function Header() {
         </button>
 
         <Link to="/" className="flex-shrink-0 mr-2">
-          <span className="text-2xl font-black tracking-tight text-primary">LearnFlair</span>
+          <span className="text-2xl font-black tracking-tight text-udemy-heading">udemy</span>
         </Link>
 
         <div className="hidden lg:block relative group">
@@ -67,7 +67,7 @@ export default function Header() {
 
         <div className="flex items-center gap-1 ml-auto">
           <Link to="/instructor" className="hidden lg:block text-sm text-muted-foreground hover:text-primary px-3 py-2">
-            Teach on LearnFlair
+            Teach on Udemy
           </Link>
           <Link to="/cart" className="p-2 relative">
             <ShoppingCart className="h-5 w-5 text-foreground" />

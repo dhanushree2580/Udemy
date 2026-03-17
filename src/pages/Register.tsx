@@ -57,7 +57,7 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary via-background to-accent/30 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link to="/" className="text-3xl font-black text-primary">LearnFlair</Link>
+          <Link to="/" className="text-3xl font-black text-udemy-heading">udemy</Link>
           <p className="text-muted-foreground text-sm mt-1">Start your learning journey</p>
         </div>
         <div className="border p-8 bg-card rounded-lg" style={{ boxShadow: "var(--shadow-card-hover)" }}>

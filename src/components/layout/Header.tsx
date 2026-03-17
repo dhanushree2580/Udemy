@@ -37,7 +37,7 @@ export default function Header() {
         </button>
 
         <Link to="/" className="flex-shrink-0 mr-2">
-          <span className="text-2xl font-black tracking-tight text-primary">LearnFlair</span>
+          <span className="text-2xl font-black tracking-tight text-udemy-heading">udemy</span>
         </Link>
 
         <div className="hidden lg:block relative group">

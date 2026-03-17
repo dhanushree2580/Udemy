@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Globe } from "lucide-react";
 
 const footerLinks = {
-  "LearnFlair Business": ["Teach on LearnFlair", "Get the app", "About us", "Contact us"],
+  "Udemy Business": ["Teach on Udemy", "Get the app", "About us", "Contact us"],
   Careers: ["Blog", "Help and Support", "Affiliate", "Investors"],
   Terms: ["Privacy policy", "Cookie settings", "Sitemap", "Accessibility"],
 };

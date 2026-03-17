@@ -11,7 +11,7 @@ export default function Checkout() {
   return (
     <div className="min-h-screen bg-background">
       <div className="border-b py-4 px-6">
-        <Link to="/" className="text-2xl font-black text-primary">LearnFlair</Link>
+        <Link to="/" className="text-2xl font-black text-udemy-heading">udemy</Link>
       </div>
 
       <div className="container max-w-4xl py-8">

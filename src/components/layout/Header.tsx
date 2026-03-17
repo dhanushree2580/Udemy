@@ -67,7 +67,7 @@ export default function Header() {
 
         <div className="flex items-center gap-1 ml-auto">
           <Link to="/instructor" className="hidden lg:block text-sm text-muted-foreground hover:text-primary px-3 py-2">
-            Teach on LearnFlair
+            Teach on Udemy
           </Link>
           <Link to="/cart" className="p-2 relative">
             <ShoppingCart className="h-5 w-5 text-foreground" />

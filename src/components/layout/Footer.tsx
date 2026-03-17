@@ -33,7 +33,7 @@ export default function Footer() {
             </button>
           </div>
           <p className="text-sm opacity-60" style={{ color: "hsl(var(--udemy-dark-fg))" }}>
-            © 2026 LearnFlair, Inc.
+            © 2026 Udemy, Inc.
           </p>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -18,24 +19,26 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/courses" element={<CourseListing />} />
-          <Route path="/course/:id" element={<CourseDetail />} />
-          <Route path="/course/:id/learn" element={<VideoPlayer />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/instructor" element={<InstructorDashboard />} />
-          <Route path="/checkout/:id" element={<Checkout />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/courses" element={<CourseListing />} />
+            <Route path="/course/:id" element={<CourseDetail />} />
+            <Route path="/course/:id/learn" element={<VideoPlayer />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/instructor" element={<InstructorDashboard />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 

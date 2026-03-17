@@ -3,27 +3,46 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import CourseGrid from "@/components/courses/CourseGrid";
 import { mockCourses, categories } from "@/data/mockData";
-import { Users, Award, Globe, Monitor } from "lucide-react";
+import { Users, Award, Globe, Monitor, Sparkles, TrendingUp } from "lucide-react";
 
 export default function Index() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative bg-secondary">
-        <div className="container py-12 lg:py-16">
-          <div className="max-w-lg bg-card p-8" style={{ boxShadow: "var(--shadow-card-hover)" }}>
-            <h1 className="text-3xl lg:text-4xl font-black mb-3 leading-tight">
-              Learning that gets you
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/20 to-secondary" />
+        <div className="container relative py-16 lg:py-24">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <Sparkles className="h-4 w-4" /> New courses added weekly
+            </div>
+            <h1 className="text-4xl lg:text-5xl font-black mb-4 leading-tight">
+              Unlock your <span className="text-primary">potential</span> with expert-led courses
             </h1>
-            <p className="text-base text-muted-foreground mb-4">
-              Skills for your present (and your future). Get started with us.
+            <p className="text-lg text-muted-foreground mb-6">
+              Join millions of learners worldwide. Skills for your present and your future, all in one place.
             </p>
-            <Link to="/courses">
-              <Button variant="udemy" size="lg" className="text-base px-6">
-                Explore courses
-              </Button>
-            </Link>
+            <div className="flex gap-3">
+              <Link to="/courses">
+                <Button variant="udemy" size="lg" className="text-base px-8 h-12">
+                  Explore courses
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="udemy-outline" size="lg" className="text-base px-8 h-12">
+                  Join free
+                </Button>
+              </Link>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Trending */}
+      <section className="container py-4">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-accent/30 px-4 py-2.5 rounded-lg">
+          <TrendingUp className="h-4 w-4 text-primary" />
+          <span><strong className="text-foreground">Trending:</strong> React, Python, Machine Learning, AWS, JavaScript, Data Science</span>
         </div>
       </section>
 
@@ -31,23 +50,21 @@ export default function Index() {
       <div className="container">
         <CourseGrid
           courses={mockCourses.slice(0, 5)}
-          title="A broad selection of courses"
-          subtitle="Choose from over 210,000 online video courses with new additions published every month"
+          title="Featured courses"
+          subtitle="Hand-picked by our team for quality and relevance"
         />
       </div>
 
       {/* Categories */}
       <section className="container py-8">
-        <h2 className="text-2xl font-bold mb-6">Top categories</h2>
+        <h2 className="text-2xl font-bold mb-6">Browse by category</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((cat) => (
-            <Link
-              to={`/courses?category=${encodeURIComponent(cat.name)}`}
-              key={cat.name}
-              className="udemy-card bg-card p-6 text-center hover:bg-accent/50 transition-colors"
-            >
+            <Link to={`/courses?category=${encodeURIComponent(cat.name)}`} key={cat.name}
+              className="group bg-card border p-6 text-center rounded-lg hover:border-primary hover:shadow-md transition-all">
               <div className="text-3xl mb-2">{cat.icon}</div>
-              <h3 className="font-bold text-sm">{cat.name}</h3>
+              <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
+              <p className="text-xs text-muted-foreground mt-0.5">{cat.courseCount.toLocaleString()} courses</p>
             </Link>
           ))}
         </div>
@@ -55,15 +72,12 @@ export default function Index() {
 
       {/* More Courses */}
       <div className="container">
-        <CourseGrid
-          courses={mockCourses.slice(5, 10)}
-          title="Students are viewing"
-        />
+        <CourseGrid courses={mockCourses.slice(5, 10)} title="Popular with learners" />
       </div>
 
-      {/* Stats banner */}
-      <section className="udemy-section-dark mt-12">
-        <div className="container py-12">
+      {/* Stats */}
+      <section className="mt-12 bg-gradient-to-r from-primary to-accent">
+        <div className="container py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { icon: Monitor, value: "210,000+", label: "Courses" },
@@ -72,9 +86,9 @@ export default function Index() {
               { icon: Award, value: "830M+", label: "Enrollments" },
             ].map((stat) => (
               <div key={stat.label}>
-                <stat.icon className="h-8 w-8 mx-auto mb-2 opacity-80" style={{ color: "hsl(var(--udemy-dark-fg))" }} />
-                <div className="text-2xl font-bold" style={{ color: "hsl(var(--udemy-dark-fg))" }}>{stat.value}</div>
-                <div className="text-sm opacity-70" style={{ color: "hsl(var(--udemy-dark-fg))" }}>{stat.label}</div>
+                <stat.icon className="h-8 w-8 mx-auto mb-2 text-primary-foreground opacity-80" />
+                <div className="text-2xl font-bold text-primary-foreground">{stat.value}</div>
+                <div className="text-sm text-primary-foreground/70">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -83,14 +97,12 @@ export default function Index() {
 
       {/* CTA */}
       <section className="container py-16 text-center">
-        <h2 className="text-3xl font-bold mb-3">Become an instructor</h2>
+        <h2 className="text-3xl font-bold mb-3">Share your knowledge</h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-6">
-          Instructors from around the world teach millions of learners on Udemy. We provide the tools and skills to teach what you love.
+          Create an online course and reach millions of learners worldwide. We provide the tools and platform.
         </p>
         <Link to="/instructor">
-          <Button variant="udemy" size="lg" className="text-base px-8">
-            Start teaching today
-          </Button>
+          <Button variant="udemy" size="lg" className="text-base px-8">Start teaching today</Button>
         </Link>
       </section>
     </Layout>

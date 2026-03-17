@@ -2,95 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&family=Suisse+Works:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 13% 13%;
+    --background: 0 0% 99%;
+    --foreground: 222 14% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 13%;
+    --card-foreground: 222 14% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 13%;
+    --popover-foreground: 222 14% 16%;
 
-    --primary: 276 86% 57%;
+    --primary: 262 80% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 220 13% 13%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 222 14% 16%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 276 86% 95%;
-    --accent-foreground: 276 86% 35%;
+    --accent: 262 60% 93%;
+    --accent-foreground: 262 80% 38%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 276 86% 57%;
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 262 80% 50%;
 
-    --radius: 0rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 276 86% 57%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 262 80% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 276 86% 95%;
-    --sidebar-accent-foreground: 276 86% 35%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 276 86% 57%;
+    --sidebar-accent: 262 60% 93%;
+    --sidebar-accent-foreground: 262 80% 38%;
+    --sidebar-border: 220 13% 90%;
+    --sidebar-ring: 262 80% 50%;
 
-    /* Udemy-specific tokens */
-    --udemy-purple: 276 86% 57%;
-    --udemy-purple-dark: 276 86% 45%;
-    --udemy-heading: 220 13% 13%;
+    /* Brand tokens */
+    --udemy-purple: 262 80% 50%;
+    --udemy-purple-dark: 262 80% 40%;
+    --udemy-heading: 222 14% 16%;
     --udemy-body: 220 9% 30%;
     --udemy-badge-bestseller: 48 96% 53%;
-    --udemy-badge-bestseller-fg: 220 13% 13%;
+    --udemy-badge-bestseller-fg: 222 14% 16%;
     --udemy-star: 42 100% 50%;
-    --udemy-success: 142 71% 45%;
-    --udemy-dark-bg: 240 4% 12%;
+    --udemy-success: 152 69% 41%;
+    --udemy-dark-bg: 240 6% 10%;
     --udemy-dark-fg: 0 0% 100%;
 
     /* Shadows */
-    --shadow-card: 0 0 0 1px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
-    --shadow-card-hover: 0 0 0 1px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.12);
-    --shadow-sticky: 0 2px 4px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-card-hover: 0 10px 25px -5px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-sticky: 0 4px 20px rgba(0,0,0,0.1);
   }
 
   .dark {
-    --background: 240 4% 12%;
+    --background: 240 6% 10%;
     --foreground: 0 0% 95%;
-    --card: 240 4% 16%;
+    --card: 240 5% 14%;
     --card-foreground: 0 0% 95%;
-    --popover: 240 4% 16%;
+    --popover: 240 5% 14%;
     --popover-foreground: 0 0% 95%;
-    --primary: 276 86% 57%;
+    --primary: 262 80% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 4% 20%;
+    --secondary: 240 4% 18%;
     --secondary-foreground: 0 0% 95%;
-    --muted: 240 4% 20%;
+    --muted: 240 4% 18%;
     --muted-foreground: 220 9% 60%;
-    --accent: 276 40% 20%;
-    --accent-foreground: 276 86% 75%;
-    --destructive: 0 62.8% 30.6%;
+    --accent: 262 30% 20%;
+    --accent-foreground: 262 80% 75%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 95%;
     --border: 240 4% 22%;
     --input: 240 4% 22%;
-    --ring: 276 86% 57%;
-    --sidebar-background: 240 4% 10%;
+    --ring: 262 80% 60%;
+    --sidebar-background: 240 6% 8%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 276 86% 57%;
+    --sidebar-primary: 262 80% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 276 40% 20%;
-    --sidebar-accent-foreground: 276 86% 75%;
+    --sidebar-accent: 262 30% 20%;
+    --sidebar-accent-foreground: 262 80% 75%;
     --sidebar-border: 240 4% 22%;
-    --sidebar-ring: 276 86% 57%;
+    --sidebar-ring: 262 80% 60%;
   }
 }
 
@@ -98,12 +98,9 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+    @apply bg-background text-foreground font-sans antialiased;
   }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
@@ -114,17 +111,19 @@
 @layer components {
   .udemy-card {
     box-shadow: var(--shadow-card);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
   .udemy-card:hover {
     box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
   }
   .udemy-badge-bestseller {
     background: hsl(var(--udemy-badge-bestseller));
     color: hsl(var(--udemy-badge-bestseller-fg));
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.125rem 0.5rem;
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.02em;
   }
   .udemy-star {
     color: hsl(var(--udemy-star));

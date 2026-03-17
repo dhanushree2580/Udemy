@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { mockCourses, mockLessons } from "@/data/mockData";
+import { formatINR } from "@/lib/format";
 import { Plus, Pencil, Trash2, GripVertical, Eye } from "lucide-react";
 
 export default function InstructorDashboard() {
@@ -22,39 +23,27 @@ export default function InstructorDashboard() {
           </Button>
         </div>
 
-        {/* Create course form */}
         {showCreate && (
-          <div className="border p-6 mb-8 bg-card" style={{ boxShadow: "var(--shadow-card)" }}>
+          <div className="border p-6 mb-8 bg-card rounded-lg" style={{ boxShadow: "var(--shadow-card)" }}>
             <h2 className="text-lg font-bold mb-4">Create a new course</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label className="text-sm font-bold">Course Title</Label>
-                <Input
-                  className="mt-1"
-                  value={newCourse.title}
+                <Input className="mt-1" value={newCourse.title}
                   onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
-                  placeholder="e.g., Complete React Developer Course"
-                />
+                  placeholder="e.g., Complete React Developer Course" />
               </div>
               <div>
-                <Label className="text-sm font-bold">Price (USD)</Label>
-                <Input
-                  className="mt-1"
-                  type="number"
-                  value={newCourse.price}
+                <Label className="text-sm font-bold">Price (₹)</Label>
+                <Input className="mt-1" type="number" value={newCourse.price}
                   onChange={(e) => setNewCourse({ ...newCourse, price: e.target.value })}
-                  placeholder="29.99"
-                />
+                  placeholder="1499" />
               </div>
               <div className="md:col-span-2">
                 <Label className="text-sm font-bold">Description</Label>
-                <Textarea
-                  className="mt-1"
-                  value={newCourse.description}
+                <Textarea className="mt-1" value={newCourse.description}
                   onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
-                  placeholder="Describe your course..."
-                  rows={3}
-                />
+                  placeholder="Describe your course..." rows={3} />
               </div>
             </div>
             <div className="flex gap-2 mt-4">
@@ -64,18 +53,17 @@ export default function InstructorDashboard() {
           </div>
         )}
 
-        {/* Course list */}
         <div className="space-y-4">
           {courses.map((course) => {
             const lessons = mockLessons.filter((l) => l.courseId === course.id);
             return (
-              <div key={course.id} className="border bg-card" style={{ boxShadow: "var(--shadow-card)" }}>
+              <div key={course.id} className="border bg-card rounded-lg overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
                 <div className="flex items-start gap-4 p-4">
-                  <img src={course.thumbnail} alt={course.title} className="w-32 h-20 object-cover shrink-0" />
+                  <img src={course.thumbnail} alt={course.title} className="w-32 h-20 object-cover shrink-0 rounded" />
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold">{course.title}</h3>
                     <p className="text-sm text-muted-foreground mt-0.5">
-                      {lessons.length} lessons · ${course.price.toFixed(2)}
+                      {lessons.length} lessons · {formatINR(course.price)}
                     </p>
                     <div className="flex items-center gap-1 mt-1">
                       <span className="inline-block w-2 h-2 rounded-full bg-udemy-success" />
@@ -88,8 +76,6 @@ export default function InstructorDashboard() {
                     <Button variant="ghost" size="icon"><Trash2 className="h-4 w-4 text-destructive" /></Button>
                   </div>
                 </div>
-
-                {/* Lessons list */}
                 {lessons.length > 0 && (
                   <div className="border-t">
                     <div className="px-4 py-2 bg-secondary/50">
@@ -104,9 +90,7 @@ export default function InstructorDashboard() {
                       </div>
                     ))}
                     {lessons.length > 5 && (
-                      <div className="px-4 py-2 text-xs text-muted-foreground border-t">
-                        +{lessons.length - 5} more lessons
-                      </div>
+                      <div className="px-4 py-2 text-xs text-muted-foreground border-t">+{lessons.length - 5} more lessons</div>
                     )}
                   </div>
                 )}

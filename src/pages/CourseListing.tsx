@@ -3,11 +3,11 @@ import { Link, useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import CourseCard from "@/components/courses/CourseCard";
 import { mockCourses, categories } from "@/data/mockData";
+import { formatINR } from "@/lib/format";
 import { Filter, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const priceFilters = ["All", "Free", "Paid"];
-const levelFilters = ["All Levels", "Beginner", "Intermediate", "Expert"];
 
 export default function CourseListing() {
   const [searchParams] = useSearchParams();
@@ -31,12 +31,9 @@ export default function CourseListing() {
         <h1 className="text-3xl font-bold mb-2">
           {query ? `Results for "${query}"` : selectedCategory || "All Courses"}
         </h1>
-        <p className="text-muted-foreground mb-6">
-          {filtered.length} result{filtered.length !== 1 ? "s" : ""}
-        </p>
+        <p className="text-muted-foreground mb-6">{filtered.length} result{filtered.length !== 1 ? "s" : ""}</p>
 
         <div className="flex gap-6">
-          {/* Filters sidebar */}
           <div className={`${showFilters ? "w-64 shrink-0" : "hidden"} hidden lg:block`}>
             <div className="space-y-6">
               <div>
@@ -45,42 +42,26 @@ export default function CourseListing() {
                 </h3>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-sm cursor-pointer">
-                    <input
-                      type="radio"
-                      name="category"
-                      checked={!selectedCategory}
-                      onChange={() => setSelectedCategory("")}
-                      className="accent-primary"
-                    />
+                    <input type="radio" name="category" checked={!selectedCategory}
+                      onChange={() => setSelectedCategory("")} className="accent-primary" />
                     All Categories
                   </label>
                   {categories.map((cat) => (
                     <label key={cat.name} className="flex items-center gap-2 text-sm cursor-pointer">
-                      <input
-                        type="radio"
-                        name="category"
-                        checked={selectedCategory === cat.name}
-                        onChange={() => setSelectedCategory(cat.name)}
-                        className="accent-primary"
-                      />
+                      <input type="radio" name="category" checked={selectedCategory === cat.name}
+                        onChange={() => setSelectedCategory(cat.name)} className="accent-primary" />
                       {cat.name}
                     </label>
                   ))}
                 </div>
               </div>
-
               <div>
                 <h3 className="font-bold text-sm mb-3">Price</h3>
                 <div className="space-y-2">
                   {priceFilters.map((p) => (
                     <label key={p} className="flex items-center gap-2 text-sm cursor-pointer">
-                      <input
-                        type="radio"
-                        name="price"
-                        checked={selectedPrice === p}
-                        onChange={() => setSelectedPrice(p)}
-                        className="accent-primary"
-                      />
+                      <input type="radio" name="price" checked={selectedPrice === p}
+                        onChange={() => setSelectedPrice(p)} className="accent-primary" />
                       {p}
                     </label>
                   ))}
@@ -89,32 +70,22 @@ export default function CourseListing() {
             </div>
           </div>
 
-          {/* Course results */}
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-4">
-              <Button
-                variant="udemy-outline"
-                size="sm"
-                className="lg:hidden"
-                onClick={() => setShowFilters(!showFilters)}
-              >
+              <Button variant="udemy-outline" size="sm" className="lg:hidden"
+                onClick={() => setShowFilters(!showFilters)}>
                 <Filter className="h-4 w-4 mr-1" /> Filter
               </Button>
-              <span className="text-sm text-muted-foreground">
-                Sort by: <strong>Most Popular</strong>
-              </span>
+              <span className="text-sm text-muted-foreground">Sort by: <strong>Most Popular</strong></span>
             </div>
 
             {filtered.length > 0 ? (
               <div className="space-y-4">
                 {filtered.map((course) => (
                   <Link key={course.id} to={`/course/${course.id}`} className="block">
-                    <div className="flex gap-4 udemy-card bg-card p-3 hover:bg-accent/30 transition-colors">
-                      <img
-                        src={course.thumbnail}
-                        alt={course.title}
-                        className="w-60 h-36 object-cover shrink-0 hidden sm:block"
-                      />
+                    <div className="flex gap-4 udemy-card bg-card p-3 rounded-lg hover:bg-accent/30 transition-colors">
+                      <img src={course.thumbnail} alt={course.title}
+                        className="w-60 h-36 object-cover shrink-0 hidden sm:block rounded-md" />
                       <div className="flex-1 min-w-0">
                         <h3 className="font-bold line-clamp-2">{course.title}</h3>
                         <p className="text-xs text-muted-foreground mt-0.5">{course.instructor}</p>
@@ -126,13 +97,13 @@ export default function CourseListing() {
                           {course.totalHours} total hours · {course.lectureCount} lectures · {course.level}
                         </p>
                         {course.bestseller && (
-                          <span className="udemy-badge-bestseller inline-block mt-2">Bestseller</span>
+                          <span className="udemy-badge-bestseller inline-block mt-2 rounded-sm">Bestseller</span>
                         )}
                       </div>
                       <div className="text-right shrink-0">
-                        <p className="font-bold">${course.price.toFixed(2)}</p>
+                        <p className="font-bold">{formatINR(course.price)}</p>
                         {course.originalPrice && (
-                          <p className="text-sm text-muted-foreground line-through">${course.originalPrice.toFixed(2)}</p>
+                          <p className="text-sm text-muted-foreground line-through">{formatINR(course.originalPrice)}</p>
                         )}
                       </div>
                     </div>

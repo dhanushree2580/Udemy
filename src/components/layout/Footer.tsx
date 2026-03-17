@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Globe } from "lucide-react";
 
 const footerLinks = {
-  "Udemy Business": ["Teach on Udemy", "Get the app", "About us", "Contact us"],
+  "LearnFlair Business": ["Teach on LearnFlair", "Get the app", "About us", "Contact us"],
   Careers: ["Blog", "Help and Support", "Affiliate", "Investors"],
-  Terms: ["Privacy policy", "Cookie settings", "Sitemap", "Accessibility statement"],
+  Terms: ["Privacy policy", "Cookie settings", "Sitemap", "Accessibility"],
 };
 
 export default function Footer() {
@@ -15,30 +15,25 @@ export default function Footer() {
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
               {links.map((link) => (
-                <Link
-                  key={link}
-                  to="#"
+                <Link key={link} to="#"
                   className="block text-sm mb-2 opacity-80 hover:opacity-100 transition-opacity"
-                  style={{ color: "hsl(var(--udemy-dark-fg))" }}
-                >
+                  style={{ color: "hsl(var(--udemy-dark-fg))" }}>
                   {link}
                 </Link>
               ))}
             </div>
           ))}
         </div>
-
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-muted/20 pt-8 gap-4">
           <div className="flex items-center gap-4">
-            <Link to="/" className="text-2xl font-black" style={{ color: "hsl(var(--udemy-dark-fg))" }}>
-              udemy
-            </Link>
-            <button className="flex items-center gap-2 border border-muted/30 px-3 py-2 text-sm" style={{ color: "hsl(var(--udemy-dark-fg))" }}>
+            <Link to="/" className="text-2xl font-black text-primary-foreground">LearnFlair</Link>
+            <button className="flex items-center gap-2 border border-muted/30 px-3 py-2 text-sm rounded"
+              style={{ color: "hsl(var(--udemy-dark-fg))" }}>
               <Globe className="h-4 w-4" /> English
             </button>
           </div>
           <p className="text-sm opacity-60" style={{ color: "hsl(var(--udemy-dark-fg))" }}>
-            © 2024 Udemy, Inc.
+            © 2026 LearnFlair, Inc.
           </p>
         </div>
       </div>
